@@ -1,0 +1,46 @@
+Number of times, we can double a number till it is less than n would be log(n).
+Fibinacci grows exponetially with n
+
+Asymtotic notations
+
+Big O, all functions that has equal or less running time than f(n), upper bound
+
+Omega, Ω all functions that has equal or more running time than g(n), lower bound
+
+Theta, θ, typ en mix ab Big O och Omega, det är ett tajtare band som bäst förklarar funktionens perf.
+
+Control flow => titta alltid på värsta scenariot
+
+Recursive, titta på hur många gånger functionen körs igenom givet inputen, och applya samma tänk
+
+    int a = 0;
+    for (i = 0; i < N; i++) {
+        for (j = N; j > i; j--) {
+            a = a + i + j;
+        }
+    }
+
+  denna är kvadratisk
+
+          int count = 0;
+        for (int i = N; i > 0; i /= 2) {
+            for (int j = 0; j < i; j++) {
+                count += 1;
+            }
+        }
+
+  1 + 1/2 + 1/4 + 1/8 + …  < 2
+
+denna är bara n! :)
+
+nLogn < n^(3/2) < n^(Logn) < 2^n
+
+let d = 0
+let fun2 = (n) =>
+{
+    if (n <= 1) return n;
+    d++
+    return fun2(n-1) + fun2(n-1);
+}
+
+denna är exponentiell
