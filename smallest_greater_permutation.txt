@@ -1,0 +1,34 @@
+0832
+//Example
+//315
+
+531 greater than 351
+351 the one
+135 lt 315
+513 greater than 351
+153 lt 315
+
+answer: 351, correct ?
+
+//high level solution:
+// find all permutations, stuff in array sort them and loop through array and find the one that is on element over the given number
+// not the most performant option but it works,
+
+// find all permutations:
+123
+
+let lenght = number.toString().length
+
+let getAllPermutations = (str) => {
+
+  if(str.length === 1) return [str]
+
+  let splits = str.split('')
+  let firstChar = splits.shift()
+  let permutations = getAllPermutations(splits.join(''))
+
+  return permutations.map(perm => firstChar + perm)
+}
+
+// find the "right perumtation"
+return permutations.sort((a,b) => a-b).find(x => x > givenNumber)
