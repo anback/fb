@@ -100,22 +100,31 @@ let maxValueOfPathSum = (node) => {
   return node.value + Math.max(maxValueOfPathSum(node.left), maxValueOfPathSum(node.right))
 }
 
+let getSum = (node) => { 
+  if(!node) return 0; 
+  return node.value + getSum(node.left) + getSum(node.right) 
+}
+
+let isCuttable = (node, parent = {sum: 0}) => {
+  if(!node) return false
+
+  node.leftSum = getSum(node.left) // could be optimized by calcualted from parent
+  node.rightSum = getSum(node.right) // could be optimized by calcualted from parent
+  node.sum = parent.sum + node.value
+
+  if(node.sum + node.rightSum === node.leftSum) return true
+  if(node.sum + node.leftSum === node.rightSum) return true
+
+  return isCuttable(node.left, node) || isCuttable(node.right, node)
+}
+
 
 var bst = new BinarySearchTree();
 bst.push(2);
 bst.push(1);
 bst.push(3);
-bst.push(1);
-bst.push(1);
-bst.push(1);
-bst.push(1);
-bst.push(1);
-/*
-    3
-  2   5
- 1   4
- */
 
+console.log(isCuttable(bst.root))
 console.log(JSON.stringify(bst.root, undefined, 2))
 
-console.log('maxValueOfPathSum', maxValueOfPathSum(bst.root))
+

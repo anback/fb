@@ -14,6 +14,7 @@ let howManyIslands = (area) => {
 
 let isNotPartOfIsland = (x,y, island) => !island.some(p => p.x === x && p.y === y)
 let isNotPartOfIslands = (i,j, islands) => islands.length === 0 ? true : islands.every(island => isNotPartOfIsland(i,j, island))
+
 let findIsland = (i, j, area, islands, res = []) => {
   if(!isNotPartOfIslands(i,j, islands)) return res
   if(!isNotPartOfIsland(i,j, res)) return res
