@@ -1,0 +1,13 @@
+//example
+
+//Acknowledge example, is example correct ?
+
+// High level solution
+
+// Acknowledge high level solution, is high level solution correct ?
+
+// start coding
+
+// debug, log troubleshoot solution
+
+// reason about time complexity/ space complexity

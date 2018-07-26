@@ -1,0 +1,13 @@
+//example
+
+//Acknowledge example
+
+// High level solution
+
+// Acknowledge high level solution
+
+// start coding
+
+// debug, log troubleshoot solution
+
+// reason about time complexity/ space complexity

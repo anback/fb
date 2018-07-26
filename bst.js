@@ -100,9 +100,9 @@ let maxValueOfPathSum = (node) => {
   return node.value + Math.max(maxValueOfPathSum(node.left), maxValueOfPathSum(node.right))
 }
 
-let getSum = (node) => { 
-  if(!node) return 0; 
-  return node.value + getSum(node.left) + getSum(node.right) 
+let getSum = (node) => {
+  if(!node) return 0;
+  return node.value + getSum(node.left) + getSum(node.right)
 }
 
 let isCuttable = (node, parent = {sum: 0}) => {
@@ -118,13 +118,27 @@ let isCuttable = (node, parent = {sum: 0}) => {
   return isCuttable(node.left, node) || isCuttable(node.right, node)
 }
 
+let getMinDepth = (node, depth = 0) => {
+  depth++
+
+  switch(true) {
+    case !node.left && !node.right: return depth
+    case !node.left: return getMinDepth(node.right, depth)
+    case !node.right: return getMinDepth(node.left, depth)
+    default: return Math.min(getMinDepth(node.left, depth), getMinDepth(node.right, depth))
+  }
+}
+
 
 var bst = new BinarySearchTree();
+
+bst.push(4);
+
+bst.push(3);
 bst.push(2);
 bst.push(1);
-bst.push(3);
+bst.push(0);
+bst.push(-1);
 
-console.log(isCuttable(bst.root))
 console.log(JSON.stringify(bst.root, undefined, 2))
-
-
+console.log('min depth', getMinDepth(bst.root))
